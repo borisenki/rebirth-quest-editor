@@ -1,0 +1,7 @@
+<comps>
+    <Panel height="40" width="250">
+        <VBox x="5" y="10">
+            <PushButton label="Добавить диалог" width="240" id="createDialog" event="click:createNewDialog"/>
+        </VBox>
+    </Panel>
+</comps>

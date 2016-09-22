@@ -1,0 +1,7 @@
+<comps>
+    <Panel x="0" y="0" width="1280" height="30">
+        <HBox x="10" y="5">
+            <Label text="Квестовый редактор для Тёмы от Олега" width="500" id="statusLabel" />
+        </HBox>
+    </Panel>
+</comps>

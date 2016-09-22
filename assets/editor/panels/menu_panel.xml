@@ -1,0 +1,12 @@
+<comps>
+    <Panel x="0" y="0" width="1280" height="30">
+        <HBox x="10" y="5">
+            <PushButton label="Открыть XML" width="100" id="loadQuest"/>
+            <PushButton label="Настройки квеста" enabled="false" width="120" id="questSettings" event="click:showQuestSettings"/>
+            <ComboBox defaultLabel="Список квестов" enabled="false" width="140" id="questsList"/>
+            <PushButton label="Новый квест" enabled="false" width="120" id="newQuest" event="click:showNewQuest"/>
+            <PushButton label="Сохранить" enabled="false" width="120" id="save" event="click:saveClick"/>
+            <PushButton label="Настройки" enabled="false" width="120" id="settings" event="click:showSettings"/>
+        </HBox>
+    </Panel>
+</comps>

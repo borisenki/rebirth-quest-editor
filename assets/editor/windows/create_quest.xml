@@ -1,0 +1,22 @@
+<comps>
+    <Panel x="3" y="3" width="300" height="300" id="rootPanel">
+        <VBox x="10" y="10">
+            <HBox>
+                <Label text="Тип квеста:"/>
+                <ComboBox width="190" defaultLabel="Тип квеста" id="typesList"/>
+            </HBox>
+            <HBox>
+                <Label text="ID квеста:"/>
+                <InputText width="190" enabled="false" text="-1" id="questIdLabel"/>
+            </HBox>
+            <HBox>
+                <Label text="Метка квеста:"/>
+                <InputText width="180" text="Квест - " id="questLabel"/>
+            </HBox>
+            <HBox>
+                <PushButton label="Отменить" id="cancel" event="click:clickClose"/>
+                <PushButton label="Создать" id="save" event="click:clickSave"/>
+            </HBox>
+        </VBox>
+    </Panel>
+</comps>

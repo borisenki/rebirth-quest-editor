@@ -1,0 +1,23 @@
+<comps>
+    <Panel x="3" y="3" width="300" height="300" id="rootPanel">
+        <VBox x="10" y="10">
+            <Label text="Размер поля:" />
+            <HBox>
+                <Label text="Ширина:" />
+                <InputText width="150" enabled="true" text="500" id="workPlaneWidth"/>
+            </HBox>
+            <HBox>
+                <Label text="Высота:" />
+                <InputText width="150" enabled="true" text="500" id="workPlaneHeight"/>
+            </HBox>
+            <HBox>
+                <Label text="Ячейка:" />
+                <InputText width="150" text="30" id="workItemSize"/>
+            </HBox>
+            <HBox>
+                <PushButton label="Отменить" id="cancel" event="click:clickClose"/>
+                <PushButton label="Сохранить" id="save" event="click:clickSave"/>
+            </HBox>
+        </VBox>
+    </Panel>
+</comps>

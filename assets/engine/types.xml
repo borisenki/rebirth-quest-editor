@@ -1,0 +1,60 @@
+<types>
+    <resources name="Ресурсы">
+        <resource id="energy" label="Энергия"/>
+        <resource id="water" label="Вода"/>
+        <resource id="food" label="Еда"/>
+        <resource id="parts" label="Детали"/>
+        <resource id="trash" label="Хлам"/>
+    </resources>
+    <mans name="Члены команды">
+        <man id="" label="Штурмовик"/>
+        <man id="" label="Разведчик"/>
+        <man id="" label="Медик"/>
+        <man id="" label="Инженер"/>
+        <man id="" label="Снайпер"/>
+        <man id="" label="Берсерк"/>
+        <man id="" label="Лидер"/>
+
+        <man id="" label="Охотник"/>
+        <man id="" label="Телекинетик"/>
+
+        <man id="" label="Наёмник"/>
+    </mans>
+    <inventory>
+        <item id="" label="Савок"/>
+        <item id="" label="Винтовка"/>
+        <item id="" label="Альпака"/>
+    </inventory>
+    <heros name="Герои">
+        <hero id="" man="штурмовик" label="Лиза"/>
+        <hero id="" man="штурмовик" label="Лиза"/>
+    </heros>
+
+    <skills>
+        <skill id="" label="Алкаш"/>
+        <skill id="" label="Пиздобол"/>
+    </skills>
+    <perks>
+        <perk id="" label="Добро" isMan="true" isHero="false"/>
+        <perk id="" label="Зло" isMan="false" isHero="true"/>
+    </perks>
+
+    <locations>
+        <location id="" label="Подвал"/>
+        <location id="" label="Завод"/>
+        <location id="" label="Гараж"/>
+        <location id="" label="ГЭС"/>
+    </locations>
+
+    <quests>
+        <quest id="area" label="Случайный на месности"/>
+        <quest id="location" label="Случайный в локации"/>
+        <quest id="special_area" label="Для определённой месности"/>
+        <quest id="special_location" label="Для определённой локации"/>
+    </quests>
+    <!-- Случайный на месности -->
+    <!-- Случайный в локации-->
+    <!-- Для определённой месности-->
+    <!-- Для определённой локации-->
+    <!-- -->
+</types>

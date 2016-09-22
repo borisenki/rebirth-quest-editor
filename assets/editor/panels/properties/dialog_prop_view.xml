@@ -1,0 +1,13 @@
+<comps>
+    <Panel x="0" y="0" height="280" width="250">
+        <VBox x="5" y="5">
+            <Label text="ID диалога:"/>
+            <InputText width="240" enabled="false" text="-1" id="dialogIdLabel"/>
+            <Label text="Стартовый диалог:"/>
+            <InputText width="240" enabled="false" text="false" id="dialogStarted"/>
+            <Label text="Текст диалога:"/>
+            <TextArea width="240" height="100" id="dialogText" text="Gecnj"/>
+            <PushButton id="saveChangesDialog" label="Сохранить" width="240" event="click:saveDialog"/>
+        </VBox>
+    </Panel>
+</comps>

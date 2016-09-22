@@ -1,0 +1,7 @@
+<comps style="dark">
+    <Panel x="0" y="0" width="500" height="40">
+        <HBox x="10" y="10">
+            <PushButton label="Quest Settings" width="70" id="questSettings" event="click:showQuestSettings"/>
+        </HBox>
+    </Panel>
+</comps>

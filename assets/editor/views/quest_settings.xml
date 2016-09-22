@@ -1,0 +1,14 @@
+<comps>
+    <Panel x="3" y="3" width="200" height="200" id="rootPanel">
+        <VBox x="10" y="10">
+            <HBox>
+                <Label text="Тип квета:"/>
+                <ComboBox label="Тип квеста" id="typesList"/>
+            </HBox>
+            <HBox>
+                <PushButton label="Сохранить" id="save"/>
+            </HBox>
+            <List/>
+        </VBox>
+    </Panel>
+</comps>
