@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="FlexBuildConfigurationManager" active="RebirthGameEditor">
+    <configurations>
+      <configuration name="RebirthGameEditor" target-platform="Desktop" pure-as="true" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/TestWindowedApp">
+        <dependencies target-player="22.0">
+          <entries>
+            <entry library-id="3fb7cbb8-8cec-4a5b-8d6a-066d9166d6df">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="2a74f25d-8117-4b13-9cb4-715e32aaeaa9">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="f508b80c-39c1-4791-a50b-81f507fc2609">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="ca50dbe3-8c60-4ad4-9d88-2417ee7f69c7">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="959e40f5-b4a9-411d-a080-75a0bc804f13">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="apache_flex" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop package-file-name="Main" />
+        <packaging-android />
+        <packaging-ios />
+      </configuration>
+    </configurations>
+    <compiler-options />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="apache_flex" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="3fb7cbb8-8cec-4a5b-8d6a-066d9166d6df" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/robotlegs-framework-v2.2.1.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="2a74f25d-8117-4b13-9cb4-715e32aaeaa9" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/Swiftsuspenders-v2.1.0.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="f508b80c-39c1-4791-a50b-81f507fc2609" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/as3signals.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="ca50dbe3-8c60-4ad4-9d88-2417ee7f69c7" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/robotlegs-extensions-SignalCommandMap.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="959e40f5-b4a9-411d-a080-75a0bc804f13" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/robotlegs-utilities-macrobot.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
