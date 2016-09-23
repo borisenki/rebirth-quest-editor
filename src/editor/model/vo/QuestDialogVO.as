@@ -83,6 +83,11 @@ public class QuestDialogVO
 		return _text;
 	}
 
+	public function get answers():Vector.<DialogAnswerVO>
+	{
+		return _answers;
+	}
+
 	public function getXML():XML
 	{
 		var questXML:XML = <dialog></dialog>;

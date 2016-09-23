@@ -3,19 +3,20 @@
  */
 package editor.view.workarea
 {
+import com.bit101.components.InputText;
 import com.bit101.components.Label;
-import com.bit101.components.Style;
 import com.bit101.components.Style;
 import com.bit101.components.Text;
 
 import editor.Settings;
+import editor.model.vo.DialogAnswerVO;
 import editor.model.vo.QuestDialogVO;
 
 import flash.display.Sprite;
+import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.filters.GlowFilter;
 import flash.geom.Rectangle;
-import flash.text.TextFieldAutoSize;
 
 import org.osflash.signals.Signal;
 
@@ -27,10 +28,14 @@ public class DialogView extends Sprite
 	private var _viewWidth:int = 250;
 	private var _viewHeight:int = 200;
 
+	private var _container:Sprite;
+
 	public function DialogView()
 	{
 		_questDialogSetup = new Signal();
 		_selectDialog = new Signal();
+		_container = new Sprite();
+		addChild(_container);
 		draw();
 		initDrag();
 		addEventListener(MouseEvent.CLICK, onClickView);
@@ -53,8 +58,10 @@ public class DialogView extends Sprite
 		_selectDialog.dispatch();
 	}
 
-	private function draw():void
+	private function draw(e:Event = null):void
 	{
+		_viewHeight = _container.height + 10;
+		graphics.clear();
 		graphics.beginFill(0x666666, 1);
 		graphics.lineStyle(1, 0x333333);
 		graphics.drawRoundRect(0, 0, _viewWidth, _viewHeight, 10, 10);
@@ -90,15 +97,32 @@ public class DialogView extends Sprite
 
 	private function initComponents():void
 	{
-		removeChildren();
-		var idLabel:Label = new Label(this, 3, 3, "ID-" + _questDialog.id);
+		_container.removeChildren();
+		var idLabel:Label = new Label(_container, 3, 3, "ID-" + _questDialog.id);
 		idLabel.textField.textColor = 0xEDBE3F;
 		var temp:uint = Style.LABEL_TEXT;
 		Style.LABEL_TEXT = 0xEDBEFF;
-		var textLabel:Text = new Text(this, 0, 20, _questDialog.text);
+		var textLabel:Text = new Text(_container, 0, 20, _questDialog.text);
+		textLabel.draw();
 		textLabel.width = _viewWidth;
 		textLabel.editable = false;
 		Style.LABEL_TEXT = temp;
+
+		var startAnswerPosition:int = textLabel.y + textLabel.height + 5;
+		for each (var answer:DialogAnswerVO in _questDialog.answers)
+		{
+			var answerID:int = answer.id;
+			var answerText:String = answer.text;
+			var answerLabel:InputText = new InputText(_container, 0, 3, "ID-" + _questDialog.id);
+			answerLabel.textField.textColor = 0xEDBE3F;
+			answerLabel.text = answerID.toString() + " | " + answerText;
+			answerLabel.y = startAnswerPosition;
+			answerLabel.width = _viewWidth;
+			answerLabel.draw();
+			startAnswerPosition += 5 + answerLabel.height;
+		}
+
+		draw();
 	}
 
 	public function get selectDialog():Signal
