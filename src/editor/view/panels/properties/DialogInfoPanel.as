@@ -1,7 +1,7 @@
 /**
  * Created by borisenki on 17.09.16.
  */
-package editor.view.panels
+package editor.view.panels.properties
 {
 import com.bit101.components.InputText;
 import com.bit101.components.TextArea;
@@ -17,7 +17,7 @@ import org.osflash.signals.Signal;
 
 public class DialogInfoPanel extends Sprite
 {
-	[Embed(source="../../../../assets/editor/panels/properties/dialog_prop_view.xml", mimeType="application/octet-stream")]
+	[Embed(source="../../../../../assets/editor/panels/properties/dialog_prop_view.xml", mimeType="application/octet-stream")]
 	private var dialog_info_Class:Class;
 
 	private var config:MinimalConfigurator;

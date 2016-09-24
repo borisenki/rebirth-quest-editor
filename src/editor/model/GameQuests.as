@@ -3,6 +3,7 @@
  */
 package editor.model
 {
+import editor.model.vo.DialogAnswerVO;
 import editor.model.vo.GameQuestVO;
 import editor.model.vo.QuestDialogVO;
 
@@ -13,9 +14,11 @@ public class GameQuests
 	public var dataUpdate:Signal;
 	public var dialogSelected:Signal;
 	public var questSelected:Signal;
+	public var answerSelected:Signal;
 
 	private var _selectedQuestId:int;
 	private var _selectedDialogId:int;
+	private var _selectedAnswerId:int;
 
 	private var _quests:Vector.<GameQuestVO>;
 
@@ -25,6 +28,7 @@ public class GameQuests
 		dataUpdate = new Signal();
 		questSelected = new Signal();
 		dialogSelected = new Signal();
+		answerSelected = new Signal();
 	}
 
 	public function setupXML(xml:XML):void
@@ -41,10 +45,16 @@ public class GameQuests
 		getQuestById(questId).createDialog();
 		dataUpdate.dispatch();
 	}
+	
 	public function createAnswer(questId:int, dialogId:int):void
 	{
 		getQuestById(questId).getDialogById(dialogId).createNewAnswer();
 		dataUpdate.dispatch();
+	}
+
+	public function getSelectedAnswer():DialogAnswerVO
+	{
+		return getSelectedDialog().getAnswer(_selectedAnswerId);
 	}
 
 	public function getQuestById(questId:int):GameQuestVO
@@ -70,15 +80,30 @@ public class GameQuests
 		questSelected.dispatch();
 	}
 
-	public function setSelectedDialog(dialogId:int):void
+	public function setSelectedDialog(dialogId:int, dispatch:Boolean = true):void
 	{
 		_selectedDialogId = dialogId;
-		dialogSelected.dispatch();
+		if (dispatch)
+		{
+			dialogSelected.dispatch();
+		}
 	}
 	
 	public function getSelectedDialog():QuestDialogVO
 	{
 		return getQuestById(_selectedQuestId).getDialogById(_selectedDialogId);
+	}
+	
+	public function updateAnswerData(answerData:DialogAnswerVO):void
+	{
+		getSelectedDialog().updateAnswer(answerData);
+		dataUpdate.dispatch();
+	}
+
+	public function setSelectedAnswer(answerId:int):void
+	{
+		_selectedAnswerId = answerId;
+		answerSelected.dispatch();
 	}
 
 	public function updateQuestData(quest:GameQuestVO):void

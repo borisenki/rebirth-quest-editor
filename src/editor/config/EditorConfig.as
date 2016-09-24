@@ -20,24 +20,28 @@ import editor.view.MenuPanel;
 import editor.view.MenuPanelMediator;
 import editor.view.StatusPanel;
 import editor.view.StatusPanelMediator;
-import editor.view.panels.CommandPanel;
-import editor.view.panels.CommandPanelMediator;
-import editor.view.panels.DialogCommandsPanel;
-import editor.view.panels.DialogCommandsPanelMediator;
-import editor.view.panels.DialogInfoPanel;
-import editor.view.panels.DialogInfoPanelMediator;
-import editor.view.panels.PropertiesPanel;
-import editor.view.panels.PropertiesPanelMediator;
-import editor.view.panels.QuestCommandsPanel;
-import editor.view.panels.QuestCommandsPanelMediator;
-import editor.view.panels.QuestInfoPanel;
-import editor.view.panels.QuestInfoPanelMediator;
+import editor.view.panels.properties.AnswerPropertiesPanel;
+import editor.view.panels.properties.AnswerPropertiesPanelMediator;
+import editor.view.panels.commands.CommandPanel;
+import editor.view.panels.commands.CommandPanelMediator;
+import editor.view.panels.commands.DialogCommandsPanel;
+import editor.view.panels.commands.DialogCommandsPanelMediator;
+import editor.view.panels.properties.DialogInfoPanel;
+import editor.view.panels.properties.DialogInfoPanelMediator;
+import editor.view.panels.properties.PropertiesPanel;
+import editor.view.panels.properties.PropertiesPanelMediator;
+import editor.view.panels.commands.QuestCommandsPanel;
+import editor.view.panels.commands.QuestCommandsPanelMediator;
+import editor.view.panels.properties.QuestInfoPanel;
+import editor.view.panels.properties.QuestInfoPanelMediator;
 import editor.view.windows.CreateQuestWindow;
 import editor.view.windows.CreateQuestWindowMediator;
 import editor.view.windows.EditorSettings;
 import editor.view.windows.EditorSettingsMediator;
 import editor.view.windows.QuestSettings;
 import editor.view.windows.QuestSettingsMediator;
+import editor.view.workarea.AnswerView;
+import editor.view.workarea.AnswerViewMediator;
 import editor.view.workarea.DialogView;
 import editor.view.workarea.DialogViewMediator;
 import editor.view.workarea.WorkPlane;
@@ -88,6 +92,7 @@ public class EditorConfig implements IConfig
 		mediatorMap.map(PropertiesPanel).toMediator(PropertiesPanelMediator);
 		mediatorMap.map(QuestInfoPanel).toMediator(QuestInfoPanelMediator);
 		mediatorMap.map(DialogInfoPanel).toMediator(DialogInfoPanelMediator);
+		mediatorMap.map(AnswerPropertiesPanel).toMediator(AnswerPropertiesPanelMediator);
 
 		mediatorMap.map(CommandPanel).toMediator(CommandPanelMediator);
 		mediatorMap.map(QuestCommandsPanel).toMediator(QuestCommandsPanelMediator);
@@ -95,6 +100,7 @@ public class EditorConfig implements IConfig
 		//workarea
 		mediatorMap.map(WorkPlane).toMediator(WorkPlaneMediator);
 		mediatorMap.map(DialogView).toMediator(DialogViewMediator);
+		mediatorMap.map(AnswerView).toMediator(AnswerViewMediator);
 		//
 		mediatorMap.map(MainView).toMediator(MainViewMediator);
 	}

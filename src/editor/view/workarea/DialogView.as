@@ -29,16 +29,19 @@ public class DialogView extends Sprite
 	private var _viewHeight:int = 200;
 
 	private var _container:Sprite;
+	private var _containerViews:Sprite;
 
 	public function DialogView()
 	{
 		_questDialogSetup = new Signal();
 		_selectDialog = new Signal();
 		_container = new Sprite();
+		_containerViews = new Sprite();
 		addChild(_container);
+		addChild(_containerViews);
 		draw();
 		initDrag();
-		addEventListener(MouseEvent.CLICK, onClickView);
+		_container.addEventListener(MouseEvent.CLICK, onClickView);
 	}
 
 	public function dialogSelected(dialogId:int):void
@@ -60,7 +63,7 @@ public class DialogView extends Sprite
 
 	private function draw(e:Event = null):void
 	{
-		_viewHeight = _container.height + 10;
+		_viewHeight = _container.height + _containerViews.height + 15;
 		graphics.clear();
 		graphics.beginFill(0x666666, 1);
 		graphics.lineStyle(1, 0x333333);
@@ -98,6 +101,7 @@ public class DialogView extends Sprite
 	private function initComponents():void
 	{
 		_container.removeChildren();
+		_containerViews.removeChildren();
 		var idLabel:Label = new Label(_container, 3, 3, "ID-" + _questDialog.id);
 		idLabel.textField.textColor = 0xEDBE3F;
 		var temp:uint = Style.LABEL_TEXT;
@@ -108,19 +112,17 @@ public class DialogView extends Sprite
 		textLabel.editable = false;
 		Style.LABEL_TEXT = temp;
 
-		var startAnswerPosition:int = textLabel.y + textLabel.height + 5;
+		var startAnswerPosition:int = 0;
 		for each (var answer:DialogAnswerVO in _questDialog.answers)
 		{
-			var answerID:int = answer.id;
-			var answerText:String = answer.text;
-			var answerLabel:InputText = new InputText(_container, 0, 3, "ID-" + _questDialog.id);
-			answerLabel.textField.textColor = 0xEDBE3F;
-			answerLabel.text = answerID.toString() + " | " + answerText;
-			answerLabel.y = startAnswerPosition;
-			answerLabel.width = _viewWidth;
-			answerLabel.draw();
-			startAnswerPosition += 5 + answerLabel.height;
+			var answerView:AnswerView = new AnswerView();
+			answerView.setDialogId(_questDialog.id);
+			answerView.setAnswer(answer);
+			answerView.y = int(startAnswerPosition);
+			_containerViews.addChild(answerView);
+			startAnswerPosition += 5 + answerView.height;
 		}
+		_containerViews.y = int(_container.height) + 5;
 
 		draw();
 	}

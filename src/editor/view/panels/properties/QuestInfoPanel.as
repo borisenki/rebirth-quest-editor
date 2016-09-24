@@ -1,7 +1,7 @@
 /**
  * Created by borisenki on 15.09.16.
  */
-package editor.view.panels
+package editor.view.panels.properties
 {
 import com.bit101.components.ComboBox;
 import com.bit101.components.InputText;
@@ -11,7 +11,7 @@ import flash.display.Sprite;
 
 public class QuestInfoPanel extends Sprite
 {
-	[Embed(source="../../../../assets/editor/panels/properties/quest_info_view.xml", mimeType="application/octet-stream")]
+	[Embed(source="../../../../../assets/editor/panels/properties/quest_info_view.xml", mimeType="application/octet-stream")]
 	private var quest_info_Class:Class;
 
 	private var config:MinimalConfigurator;

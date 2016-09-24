@@ -1,3 +1,57 @@
 <data>
-    <!-- -->
+  <quest id="1" label="Квест - 1" type="special_area">
+    <dialogs>
+      <dialog id="1" started="true" text="Чё теперь делать будем? По моему происходит какой-то лютый пиздец!">
+        <answers>
+          <answer id="1" text="Открыть дверь с ноги"/>
+          <answer id="2" text="Шмальнуть в дверь"/>
+          <answer id="3" text="Сесть посрать"/>
+          <answer id="4" text="Встать поссать"/>
+          <answer id="5" text="Пойти нахуй"/>
+        </answers>
+      </dialog>
+      <dialog id="2" started="true" text="А теперь делать будем?">
+        <answers>
+          <answer id="1" text="TEMP"/>
+          <answer id="2" text="TEMP"/>
+        </answers>
+      </dialog>
+      <dialog id="3" started="true" text="Не, всё равно пиздец какойто:(">
+        <answers>
+          <answer id="1" text="TEMP"/>
+        </answers>
+      </dialog>
+      <dialog id="4" started="true" text="ООО!!! Ты только посмотри на это!">
+        <answers>
+          <answer id="1" text="TEMP"/>
+          <answer id="2" text="TEMP"/>
+          <answer id="3" text="TEMP"/>
+        </answers>
+      </dialog>
+      <dialog id="5" started="true" text="Ццц, ну пиздец ваще!">
+        <answers>
+          <answer id="1" text="TEMP"/>
+          <answer id="2" text="TEMP"/>
+        </answers>
+      </dialog>
+    </dialogs>
+  </quest>
+  <quest id="2" label="Квест - 2" type="location">
+    <dialogs>
+      <dialog id="1" started="true" text=""/>
+    </dialogs>
+  </quest>
+  <quest id="3" label="Квест - 3" type="area">
+    <dialogs>
+      <dialog id="1" started="true" text=""/>
+    </dialogs>
+  </quest>
+  <quest id="4" label="Осада" type="area">
+    <dialogs>
+      <dialog id="1" started="true" text="123"/>
+      <dialog id="2" started="true" text="1234"/>
+      <dialog id="3" started="true" text="12345"/>
+      <dialog id="4" started="true" text="12345"/>
+    </dialogs>
+  </quest>
 </data>

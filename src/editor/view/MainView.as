@@ -6,8 +6,8 @@ package editor.view
 import com.bit101.utils.MinimalConfigurator;
 
 import editor.Settings;
-import editor.view.panels.CommandPanel;
-import editor.view.panels.PropertiesPanel;
+import editor.view.panels.commands.CommandPanel;
+import editor.view.panels.properties.PropertiesPanel;
 import editor.view.windows.QuestSettings;
 import editor.view.workarea.WorkPlane;
 

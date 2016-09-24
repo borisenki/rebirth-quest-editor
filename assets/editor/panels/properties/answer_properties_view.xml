@@ -1,0 +1,11 @@
+<comps>
+    <Panel x="0" y="0" height="170" width="250">
+        <VBox x="5" y="5">
+            <Label text="ID ответа:"/>
+            <InputText width="240" enabled="false" text="-1" id="answerIdLabel"/>
+            <Label text="Текст диалога:"/>
+            <TextArea width="240" height="50" id="answerText" text="TEMP"/>
+            <PushButton id="saveChangesAnswer" label="Сохранить" width="240" event="click:saveAnswer"/>
+        </VBox>
+    </Panel>
+</comps>

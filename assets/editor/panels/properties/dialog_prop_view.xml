@@ -1,5 +1,5 @@
 <comps>
-    <Panel x="0" y="0" height="280" width="250">
+    <Panel x="0" y="0" height="260" width="250">
         <VBox x="5" y="5">
             <Label text="ID диалога:"/>
             <InputText width="240" enabled="false" text="-1" id="dialogIdLabel"/>

@@ -1,7 +1,7 @@
 /**
  * Created by borisenki on 22.09.16.
  */
-package editor.view.panels
+package editor.view.panels.commands
 {
 import com.bit101.components.PushButton;
 import com.bit101.utils.MinimalConfigurator;
@@ -13,7 +13,7 @@ import org.osflash.signals.Signal;
 
 public class DialogCommandsPanel extends Sprite
 {
-	[Embed(source="../../../../assets/editor/panels/command/dialog_commands_view.xml", mimeType="application/octet-stream")]
+	[Embed(source="../../../../../assets/editor/panels/command/dialog_commands_view.xml", mimeType="application/octet-stream")]
 	private var quest_info_Class:Class;
 
 	private var config:MinimalConfigurator;

@@ -1,8 +1,10 @@
 /**
  * Created by borisenki on 07.09.16.
  */
-package editor.view.panels
+package editor.view.panels.commands
 {
+import editor.view.panels.*;
+
 import com.bit101.components.Panel;
 import com.bit101.utils.MinimalConfigurator;
 
@@ -12,7 +14,7 @@ import flash.display.Sprite;
 
 public class CommandPanel extends Sprite
 {
-	[Embed(source="../../../../assets/editor/panels/command/command_panel.xml", mimeType="application/octet-stream")]
+	[Embed(source="../../../../../assets/editor/panels/command/command_panel.xml", mimeType="application/octet-stream")]
 	private var command_panel_Class:Class;
 
 	public static const QUEST_COMMANDS:int = 2;

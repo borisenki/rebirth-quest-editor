@@ -1,7 +1,7 @@
 /**
  * Created by borisenki on 07.09.16.
  */
-package editor.view.panels
+package editor.view.panels.properties
 {
 import editor.model.DataModel;
 import editor.model.GameQuests;
@@ -24,6 +24,12 @@ public class PropertiesPanelMediator extends Mediator
 		super.initialize(); 
 		gameQuests.questSelected.add(onQuestSelected);
 		gameQuests.dialogSelected.add(onDialogSelected);
+		gameQuests.answerSelected.add(onAnswerSelected);
+	}
+
+	private function onAnswerSelected():void
+	{
+		view.fillPanel(PropertiesPanel.DIALOG_INFO_PANEL | PropertiesPanel.ANSWER_PROPERTIES_PANEL);
 	}
 
 	private function onDialogSelected():void
@@ -42,6 +48,7 @@ public class PropertiesPanelMediator extends Mediator
 		super.destroy();
 		gameQuests.questSelected.remove(onQuestSelected);
 		gameQuests.dialogSelected.remove(onDialogSelected);
+		gameQuests.answerSelected.remove(onAnswerSelected);
 	}
 }
 }

@@ -37,6 +37,29 @@ public class QuestDialogVO
 		}
 	}
 
+	public function getAnswer(answerId:int):DialogAnswerVO
+	{
+		for each (var answer:DialogAnswerVO in _answers)
+		{
+			if (answer.id == answerId)
+			{
+				return answer;
+			}
+		}
+		return null;
+	}
+
+	public function updateAnswer(answerData:DialogAnswerVO):void
+	{
+		for (var i:int = 0; i < _answers.length; i++)
+		{
+			if (_answers[i].id == answerData.id)
+			{
+				_answers[i] = answerData;
+			}
+		}
+	}
+
 	public function createNewAnswer():void
 	{
 		var lastId:int = 0;

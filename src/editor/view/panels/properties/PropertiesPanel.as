@@ -1,8 +1,10 @@
 /**
  * Created by borisenki on 07.09.16.
  */
-package editor.view.panels
+package editor.view.panels.properties
 {
+import editor.view.panels.*;
+
 import com.bit101.components.Label;
 import com.bit101.components.Panel;
 import com.bit101.utils.MinimalConfigurator;
@@ -11,11 +13,12 @@ import flash.display.Sprite;
 
 public class PropertiesPanel extends Sprite
 {
-	[Embed(source="../../../../assets/editor/panels/properties/properties_panel.xml", mimeType="application/octet-stream")]
+	[Embed(source="../../../../../assets/editor/panels/properties/properties_panel.xml", mimeType="application/octet-stream")]
 	private var properties_panel_Class:Class;
 
 	public static const QUEST_INFO_PANEL:int = 2;
 	public static const DIALOG_INFO_PANEL:int = 4;
+	public static const ANSWER_PROPERTIES_PANEL:int = 8;
 
 	private var config:MinimalConfigurator;
 	private var rootPanel:Panel;
@@ -51,10 +54,22 @@ public class PropertiesPanel extends Sprite
 		{
 			addDialogInfo();
 		}
+		if (ANSWER_PROPERTIES_PANEL & mask)
+		{
+			addAnswerProperties();
+		}
 		if (QUEST_INFO_PANEL & mask)
 		{
 			addQuestInfo();
 		}
+	}
+
+	private function addAnswerProperties():void
+	{
+		var answerProperties:AnswerPropertiesPanel = new AnswerPropertiesPanel();
+		answerProperties.y = panelsContainerHeight;
+		panelsContainer.addChild(answerProperties);
+		panelsContainerHeight += 170;
 	}
 
 	public function addQuestInfo():void
@@ -70,7 +85,7 @@ public class PropertiesPanel extends Sprite
 		var dialogInfo:DialogInfoPanel = new DialogInfoPanel();
 		dialogInfo.y = panelsContainerHeight;
 		panelsContainer.addChild(dialogInfo);
-		panelsContainerHeight += 300;
+		panelsContainerHeight += 260;
 	}
 }
 }

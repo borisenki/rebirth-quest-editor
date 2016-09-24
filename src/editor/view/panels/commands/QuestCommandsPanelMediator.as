@@ -1,7 +1,7 @@
 /**
  * Created by borisenki on 17.09.16.
  */
-package editor.view.panels
+package editor.view.panels.commands
 {
 import editor.controller.signals.StatusPanelSignal;
 import editor.model.DataModel;

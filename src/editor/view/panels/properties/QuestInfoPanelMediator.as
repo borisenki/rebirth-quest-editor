@@ -1,7 +1,7 @@
 /**
  * Created by borisenki on 15.09.16.
  */
-package editor.view.panels
+package editor.view.panels.properties
 {
 import robotlegs.bender.bundles.mvcs.Mediator;
 
