@@ -106,6 +106,11 @@ public class QuestDialogVO
 		return _text;
 	}
 
+	public function get label():String
+	{
+		return id + "|" + text;
+	}
+
 	public function get answers():Vector.<DialogAnswerVO>
 	{
 		return _answers;

@@ -11,6 +11,7 @@ import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
+import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.ui.Keyboard;
 
@@ -19,15 +20,23 @@ public class WorkPlane extends Sprite
 	private var _spacePressed:Boolean = false;
 	private var _area:Sprite;
 	private var _dialogsCont:Sprite;
+	private var _relationsCont:Sprite;
 	private var _selectedQuest:GameQuestVO;
+	private var _dialogs:Vector.<DialogView>;
+
+	private var _relationsAnswers:Vector.<AnswerView>;
 
 	public function WorkPlane()
 	{
 		super();
+		_dialogs = new <DialogView>[];
+		_relationsAnswers = new <AnswerView>[];
 		_area = new Sprite();
 		_dialogsCont = new Sprite();
+		_relationsCont = new Sprite();
 		addChild(_area);
 		addChild(_dialogsCont);
+		addChild(_relationsCont);
 		createPlane();
 		initDrag();
 		addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
@@ -42,6 +51,8 @@ public class WorkPlane extends Sprite
 
 	public function questSelected(quest:GameQuestVO):void
 	{
+		_dialogs = new <DialogView>[];
+		_relationsAnswers = new <AnswerView>[];
 		_selectedQuest = quest;
 		drawDialogs();
 	}
@@ -50,14 +61,55 @@ public class WorkPlane extends Sprite
 	{
 		_dialogsCont.removeChildren();
 		var xOffset:int = 15;
+
 		for each (var dialog:QuestDialogVO in _selectedQuest.dialogs)
 		{
-			var dialogView:DialogView = new DialogView();
-			dialogView.setQuestDialog(dialog);
+			var newDialogView:DialogView = new DialogView();
+			newDialogView.setQuestDialog(dialog);
+			_dialogs.push(newDialogView);
+		}
+
+		for each (var dialogView:DialogView in _dialogs)
+		{
+			dialogView.initDialog();
 			dialogView.x = xOffset;
 			dialogView.y = 15;
 			_dialogsCont.addChild(dialogView);
-			xOffset = dialogView.x + dialogView.width + 10;
+			xOffset = dialogView.x + dialogView.width + 40;
+		}
+		drawRelation();
+	}
+
+	private function getDialogViewById(dialogId:int):DialogView
+	{
+		for each (var dialogView:DialogView in _dialogs)
+		{
+			if (dialogView.questDialog.id == dialogId)
+			{
+				return dialogView;
+			}
+		}
+		return null;
+	}
+
+	public function createRelation(answer:AnswerView):void
+	{
+		_relationsAnswers.push(answer);
+	}
+
+	private function drawRelation():void
+	{
+		_relationsCont.graphics.clear();
+		for each (var answer:AnswerView in _relationsAnswers)
+		{
+			var dialogView:DialogView = getDialogViewById(answer.answerData.relation);
+			var startDrawPoint:Point = _relationsCont.globalToLocal(answer.getGlobalPointOfRelation());
+			var endDrawPoint:Point = _relationsCont.globalToLocal(dialogView.getGlobalPointOfRelation());
+			_relationsCont.graphics.beginFill(0xFF0000, 1);
+			_relationsCont.graphics.lineStyle(2, 0xFF0000);
+			_relationsCont.graphics.moveTo(startDrawPoint.x, startDrawPoint.y);
+			_relationsCont.graphics.lineTo(endDrawPoint.x, endDrawPoint.y);
+			_relationsCont.graphics.endFill();
 		}
 	}
 

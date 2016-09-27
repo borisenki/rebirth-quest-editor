@@ -29,12 +29,18 @@ public class AnswerPropertiesPanelMediator extends Mediator
 	private function init():void
 	{
 		_selectedAnswer = gameQuests.getSelectedAnswer();
+		view.setDialogsList(gameQuests.getSelectedQuest().dialogs);
+		if (_selectedAnswer.relation != -1)
+		{
+			view.setSelectedDialogList(gameQuests.getSelectedQuest().getDialogById(_selectedAnswer.relation));
+		}
 		view.setInfo(_selectedAnswer);
 	}
 
 	private function saveAnswer():void
 	{
 		_selectedAnswer.text = view.getAnswerText();
+		_selectedAnswer.relation = view.getRelationId();
 		gameQuests.updateAnswerData(_selectedAnswer);
 	}
 

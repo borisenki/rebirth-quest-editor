@@ -3,7 +3,6 @@
  */
 package editor.view.workarea
 {
-import com.bit101.components.InputText;
 import com.bit101.components.Label;
 import com.bit101.components.Style;
 import com.bit101.components.Text;
@@ -16,7 +15,9 @@ import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.filters.GlowFilter;
+import flash.geom.Point;
 import flash.geom.Rectangle;
+import flash.utils.Dictionary;
 
 import org.osflash.signals.Signal;
 
@@ -30,6 +31,7 @@ public class DialogView extends Sprite
 
 	private var _container:Sprite;
 	private var _containerViews:Sprite;
+	private var _enterRelations:Sprite;
 
 	public function DialogView()
 	{
@@ -37,11 +39,24 @@ public class DialogView extends Sprite
 		_selectDialog = new Signal();
 		_container = new Sprite();
 		_containerViews = new Sprite();
+		_enterRelations = new Sprite();
+		addChild(_enterRelations);
 		addChild(_container);
 		addChild(_containerViews);
 		draw();
 		initDrag();
+		initEnterRelations();
 		_container.addEventListener(MouseEvent.CLICK, onClickView);
+	}
+
+	private function initEnterRelations():void
+	{
+		_enterRelations.graphics.beginFill(0x0, 0.8);
+		_enterRelations.graphics.drawCircle(0, 0, 11);
+		_enterRelations.graphics.endFill();
+		_enterRelations.graphics.beginFill(0x555555, 0.7);
+		_enterRelations.graphics.drawCircle(0, 0, 10);
+		_enterRelations.graphics.endFill();
 	}
 
 	public function dialogSelected(dialogId:int):void
@@ -69,6 +84,8 @@ public class DialogView extends Sprite
 		graphics.lineStyle(1, 0x333333);
 		graphics.drawRoundRect(0, 0, _viewWidth, _viewHeight, 10, 10);
 		graphics.endFill();
+
+		_enterRelations.y = _container.y + _container.height / 2;
 	}
 
 	private function initDrag():void
@@ -95,6 +112,10 @@ public class DialogView extends Sprite
 	public function setQuestDialog(questDialog:QuestDialogVO):void
 	{
 		_questDialog = questDialog;
+	}
+
+	public function initDialog():void
+	{
 		initComponents();
 	}
 
@@ -116,10 +137,10 @@ public class DialogView extends Sprite
 		for each (var answer:DialogAnswerVO in _questDialog.answers)
 		{
 			var answerView:AnswerView = new AnswerView();
+			_containerViews.addChild(answerView);
 			answerView.setDialogId(_questDialog.id);
 			answerView.setAnswer(answer);
 			answerView.y = int(startAnswerPosition);
-			_containerViews.addChild(answerView);
 			startAnswerPosition += 5 + answerView.height;
 		}
 		_containerViews.y = int(_container.height) + 5;
@@ -135,6 +156,16 @@ public class DialogView extends Sprite
 	public function get questDialog():QuestDialogVO
 	{
 		return _questDialog;
+	}
+
+	public function get enterRelations():Sprite
+	{
+		return _enterRelations;
+	}
+
+	public function getGlobalPointOfRelation():Point
+	{
+		return localToGlobal(new Point(_enterRelations.x, _enterRelations.y));
 	}
 
 	public function destroy():void

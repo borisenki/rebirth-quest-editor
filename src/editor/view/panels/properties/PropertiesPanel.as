@@ -69,7 +69,7 @@ public class PropertiesPanel extends Sprite
 		var answerProperties:AnswerPropertiesPanel = new AnswerPropertiesPanel();
 		answerProperties.y = panelsContainerHeight;
 		panelsContainer.addChild(answerProperties);
-		panelsContainerHeight += 170;
+		panelsContainerHeight += 180;
 	}
 
 	public function addQuestInfo():void

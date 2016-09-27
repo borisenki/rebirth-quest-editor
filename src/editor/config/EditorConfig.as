@@ -7,6 +7,7 @@ import editor.controller.Utils;
 import editor.controller.commands.LoadQuestsCommand;
 import editor.controller.commands.MacroSequenceCommand;
 import editor.controller.commands.SaveQuestsCommand;
+import editor.controller.signals.CreateRelationSignal;
 import editor.controller.signals.LoadQuestsSignal;
 import editor.controller.signals.MacroSequenceSignal;
 import editor.controller.signals.QuestsLoadedSignal;
@@ -20,18 +21,18 @@ import editor.view.MenuPanel;
 import editor.view.MenuPanelMediator;
 import editor.view.StatusPanel;
 import editor.view.StatusPanelMediator;
-import editor.view.panels.properties.AnswerPropertiesPanel;
-import editor.view.panels.properties.AnswerPropertiesPanelMediator;
 import editor.view.panels.commands.CommandPanel;
 import editor.view.panels.commands.CommandPanelMediator;
 import editor.view.panels.commands.DialogCommandsPanel;
 import editor.view.panels.commands.DialogCommandsPanelMediator;
+import editor.view.panels.commands.QuestCommandsPanel;
+import editor.view.panels.commands.QuestCommandsPanelMediator;
+import editor.view.panels.properties.AnswerPropertiesPanel;
+import editor.view.panels.properties.AnswerPropertiesPanelMediator;
 import editor.view.panels.properties.DialogInfoPanel;
 import editor.view.panels.properties.DialogInfoPanelMediator;
 import editor.view.panels.properties.PropertiesPanel;
 import editor.view.panels.properties.PropertiesPanelMediator;
-import editor.view.panels.commands.QuestCommandsPanel;
-import editor.view.panels.commands.QuestCommandsPanelMediator;
 import editor.view.panels.properties.QuestInfoPanel;
 import editor.view.panels.properties.QuestInfoPanelMediator;
 import editor.view.windows.CreateQuestWindow;
@@ -71,6 +72,7 @@ public class EditorConfig implements IConfig
 	{
 		injector.map(StatusPanelSignal).asSingleton();
 		injector.map(QuestsLoadedSignal).asSingleton();
+		injector.map(CreateRelationSignal).asSingleton();
 		//commandMap.map(StatusPanelSignal);
 
 		injector.map(DataModel).asSingleton();

@@ -3,6 +3,7 @@
  */
 package editor.view.workarea
 {
+import editor.controller.signals.CreateRelationSignal;
 import editor.model.GameQuests;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
@@ -15,10 +16,19 @@ public class AnswerViewMediator extends Mediator
 	[Inject]
 	public var gameQuests:GameQuests
 
+	[Inject]
+	public var createRelationSignal:CreateRelationSignal;
+
 	override public function initialize():void
 	{
 		super.initialize();
 		view.answerSelectedSignal.add(answerSelected);
+		view.createRelationSignal.add(createRelation);
+	}
+
+	private function createRelation():void
+	{
+		createRelationSignal.dispatch(view);
 	}
 
 	private function answerSelected():void
@@ -31,6 +41,7 @@ public class AnswerViewMediator extends Mediator
 	{
 		super.destroy();
 		view.answerSelectedSignal.remove(answerSelected);
+		view.createRelationSignal.remove(createRelation);
 	}
 }
 }
