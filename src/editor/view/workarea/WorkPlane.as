@@ -97,7 +97,7 @@ public class WorkPlane extends Sprite
 		_relationsAnswers.push(answer);
 	}
 
-	private function drawRelation():void
+	public function drawRelation():void
 	{
 		_relationsCont.graphics.clear();
 		for each (var answer:AnswerView in _relationsAnswers)

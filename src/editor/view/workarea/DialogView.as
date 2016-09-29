@@ -17,7 +17,6 @@ import flash.events.MouseEvent;
 import flash.filters.GlowFilter;
 import flash.geom.Point;
 import flash.geom.Rectangle;
-import flash.utils.Dictionary;
 
 import org.osflash.signals.Signal;
 
@@ -25,6 +24,7 @@ public class DialogView extends Sprite
 {
 	private var _questDialog:QuestDialogVO;
 	private var _questDialogSetup:Signal;
+	private var _drawRelations:Signal;
 	private var _selectDialog:Signal;
 	private var _viewWidth:int = 250;
 	private var _viewHeight:int = 200;
@@ -37,6 +37,7 @@ public class DialogView extends Sprite
 	{
 		_questDialogSetup = new Signal();
 		_selectDialog = new Signal();
+		_drawRelations = new Signal();
 		_container = new Sprite();
 		_containerViews = new Sprite();
 		_enterRelations = new Sprite();
@@ -96,6 +97,8 @@ public class DialogView extends Sprite
 
 	private function onStopDrag(e:MouseEvent = null):void
 	{
+		removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+		_drawRelations.dispatch();
 		this.stopDrag();
 	}
 
@@ -107,6 +110,12 @@ public class DialogView extends Sprite
 		dragRect.width = 1280 - Settings.COMMAND_PANEL_WIDTH - Settings.PROPERTIES_PANEL_WIDTH - this.width;
 		dragRect.height = 720 - 30 - 30 - this.height;
 		this.startDrag(false);
+		addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+	}
+
+	private function onMouseMove(e:MouseEvent):void
+	{
+		_drawRelations.dispatch();
 	}
 
 	public function setQuestDialog(questDialog:QuestDialogVO):void
@@ -166,6 +175,11 @@ public class DialogView extends Sprite
 	public function getGlobalPointOfRelation():Point
 	{
 		return localToGlobal(new Point(_enterRelations.x, _enterRelations.y));
+	}
+
+	public function get drawRelations():Signal
+	{
+		return _drawRelations;
 	}
 
 	public function destroy():void

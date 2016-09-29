@@ -8,6 +8,7 @@ import editor.controller.commands.LoadQuestsCommand;
 import editor.controller.commands.MacroSequenceCommand;
 import editor.controller.commands.SaveQuestsCommand;
 import editor.controller.signals.CreateRelationSignal;
+import editor.controller.signals.DrawRelationsSignal;
 import editor.controller.signals.LoadQuestsSignal;
 import editor.controller.signals.MacroSequenceSignal;
 import editor.controller.signals.QuestsLoadedSignal;
@@ -73,6 +74,7 @@ public class EditorConfig implements IConfig
 		injector.map(StatusPanelSignal).asSingleton();
 		injector.map(QuestsLoadedSignal).asSingleton();
 		injector.map(CreateRelationSignal).asSingleton();
+		injector.map(DrawRelationsSignal).asSingleton();
 		//commandMap.map(StatusPanelSignal);
 
 		injector.map(DataModel).asSingleton();

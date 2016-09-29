@@ -4,6 +4,7 @@
 package editor.view.workarea
 {
 import editor.controller.signals.CreateRelationSignal;
+import editor.controller.signals.DrawRelationsSignal;
 import editor.model.DataModel;
 import editor.model.GameQuests;
 import editor.model.vo.DialogAnswerVO;
@@ -25,6 +26,9 @@ public class WorkPlaneMediator extends Mediator
 	[Inject]
 	public var createRelationSignal:CreateRelationSignal;
 
+	[Inject]
+	public var drawRelationsSignal:DrawRelationsSignal;
+
 	private var selectedQuest:GameQuestVO;
 
 	override public function initialize():void
@@ -33,6 +37,12 @@ public class WorkPlaneMediator extends Mediator
 		gameQuests.questSelected.add(setQuestOnPanel);
 		gameQuests.dataUpdate.add(dataUpdated);
 		createRelationSignal.add(createRelation);
+		drawRelationsSignal.add(drawRelations);
+	}
+
+	private function drawRelations():void
+	{
+		view.drawRelation();
 	}
 
 	private function createRelation(answer:AnswerView):void
@@ -62,6 +72,7 @@ public class WorkPlaneMediator extends Mediator
 		gameQuests.questSelected.remove(setQuestOnPanel);
 		gameQuests.dataUpdate.remove(dataUpdated);
 		createRelationSignal.remove(createRelation);
+		drawRelationsSignal.remove(drawRelations);
 	}
 }
 }
