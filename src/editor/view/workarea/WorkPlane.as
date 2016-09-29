@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 10.09.16.
- */
 package editor.view.workarea
 {
 import editor.Settings;
@@ -35,8 +32,8 @@ public class WorkPlane extends Sprite
 		_dialogsCont = new Sprite();
 		_relationsCont = new Sprite();
 		addChild(_area);
-		addChild(_dialogsCont);
 		addChild(_relationsCont);
+		addChild(_dialogsCont);
 		createPlane();
 		initDrag();
 		addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
@@ -72,8 +69,8 @@ public class WorkPlane extends Sprite
 		for each (var dialogView:DialogView in _dialogs)
 		{
 			dialogView.initDialog();
-			dialogView.x = xOffset;
-			dialogView.y = 15;
+			dialogView.x = (dialogView.getPositionX() != -1) ? dialogView.getPositionX() : xOffset;
+			dialogView.y = (dialogView.getPositionY() != -1) ? dialogView.getPositionY() : 15;
 			_dialogsCont.addChild(dialogView);
 			xOffset = dialogView.x + dialogView.width + 40;
 		}

@@ -1,13 +1,9 @@
-/**
- * Created by borisenki on 10.09.16.
- */
 package editor.view.workarea
 {
 import editor.controller.signals.CreateRelationSignal;
 import editor.controller.signals.DrawRelationsSignal;
 import editor.model.DataModel;
 import editor.model.GameQuests;
-import editor.model.vo.DialogAnswerVO;
 import editor.model.vo.GameQuestVO;
 
 import robotlegs.bender.bundles.mvcs.Mediator;

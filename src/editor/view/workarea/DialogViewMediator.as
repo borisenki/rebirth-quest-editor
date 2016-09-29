@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 15.09.16.
- */
 package editor.view.workarea
 {
 import editor.controller.signals.DrawRelationsSignal;
@@ -24,12 +21,18 @@ public class DialogViewMediator extends Mediator
 		super.initialize();
 		view.selectDialog.add(selectDialog);
 		view.drawRelations.add(drawRelations);
+		view.updatePositionSignal.add(updatePosition);
 		gameQuests.dialogSelected.add(dialogSelected);
 	}
 
 	private function drawRelations():void
 	{
 		drawRelationsSignal.dispatch();
+	}
+
+	private function updatePosition():void
+	{
+		gameQuests.updateDialogPosition(view.questDialog.id, view.x, view.y);
 	}
 
 	private function dialogSelected():void
@@ -47,6 +50,7 @@ public class DialogViewMediator extends Mediator
 		view.selectDialog.remove(selectDialog);
 		view.drawRelations.remove(drawRelations);
 		gameQuests.dialogSelected.remove(dialogSelected);
+		view.updatePositionSignal.remove(updatePosition);
 		super.destroy();
 	}
 }

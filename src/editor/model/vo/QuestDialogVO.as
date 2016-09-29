@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 16.09.16.
- */
 package editor.model.vo
 {
 public class QuestDialogVO
@@ -9,6 +6,8 @@ public class QuestDialogVO
 	private var _id:int;
 	private var _text:String = "Текст диалога";
 	private var _answers:Vector.<DialogAnswerVO>;
+	private var _positionX:int;
+	private var _positionY:int;
 
 	public function QuestDialogVO(xml:XML = null)
 	{
@@ -25,6 +24,8 @@ public class QuestDialogVO
 			{
 				_text = xml.@text;
 			}
+			_positionX = (xml.@positionX != undefined) ? xml.@positionX : -1;
+			_positionY = (xml.@positionY != undefined) ? xml.@positionY : -1;
 			for each (var answer:XML in xml.answers.answer)
 			{
 				_answers.push(new DialogAnswerVO(answer));
@@ -35,6 +36,12 @@ public class QuestDialogVO
 			_id = 1;
 			_started = false;
 		}
+	}
+
+	public function updatePosition(posX:int, posY:int):void
+	{
+		positionX = posX;
+		positionY = posY;
 	}
 
 	public function getAnswer(answerId:int):DialogAnswerVO
@@ -116,12 +123,34 @@ public class QuestDialogVO
 		return _answers;
 	}
 
+	public function set positionX(value:int):void
+	{
+		_positionX = value;
+	}
+
+	public function set positionY(value:int):void
+	{
+		_positionY = value;
+	}
+
+	public function get positionX():int
+	{
+		return _positionX;
+	}
+
+	public function get positionY():int
+	{
+		return _positionY;
+	}
+
 	public function getXML():XML
 	{
 		var questXML:XML = <dialog></dialog>;
 		questXML.@id = _id;
 		questXML.@started = _started;
 		questXML.@text = _text;
+		questXML.@positionX = _positionX;
+		questXML.@positionY = _positionY;
 		if (_answers.length > 0)
 		{
 			var dialogsList:XML = <answers></answers>;

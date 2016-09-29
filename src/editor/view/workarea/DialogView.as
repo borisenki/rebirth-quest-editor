@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 15.09.16.
- */
 package editor.view.workarea
 {
 import com.bit101.components.Label;
@@ -26,6 +23,7 @@ public class DialogView extends Sprite
 	private var _questDialogSetup:Signal;
 	private var _drawRelations:Signal;
 	private var _selectDialog:Signal;
+	private var _updatePositionSignal:Signal;
 	private var _viewWidth:int = 250;
 	private var _viewHeight:int = 200;
 
@@ -38,6 +36,7 @@ public class DialogView extends Sprite
 		_questDialogSetup = new Signal();
 		_selectDialog = new Signal();
 		_drawRelations = new Signal();
+		_updatePositionSignal = new Signal();
 		_container = new Sprite();
 		_containerViews = new Sprite();
 		_enterRelations = new Sprite();
@@ -99,6 +98,7 @@ public class DialogView extends Sprite
 	{
 		removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 		_drawRelations.dispatch();
+		_updatePositionSignal.dispatch();
 		this.stopDrag();
 	}
 
@@ -180,6 +180,21 @@ public class DialogView extends Sprite
 	public function get drawRelations():Signal
 	{
 		return _drawRelations;
+	}
+
+	public function get updatePositionSignal():Signal
+	{
+		return _updatePositionSignal;
+	}
+
+	public function getPositionX():int
+	{
+		return _questDialog.positionX;
+	}
+
+	public function getPositionY():int
+	{
+		return _questDialog.positionY;
 	}
 
 	public function destroy():void

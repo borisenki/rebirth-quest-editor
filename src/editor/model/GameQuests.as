@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 18.09.16.
- */
 package editor.model
 {
 import editor.model.vo.DialogAnswerVO;
@@ -55,6 +52,11 @@ public class GameQuests
 	public function getSelectedAnswer():DialogAnswerVO
 	{
 		return getSelectedDialog().getAnswer(_selectedAnswerId);
+	}
+
+	public function updateDialogPosition(dialogId:int, posX:int, posY:int):void
+	{
+		getQuestById(_selectedQuestId).getDialogById(dialogId).updatePosition(posX, posY);
 	}
 
 	public function getQuestById(questId:int):GameQuestVO
