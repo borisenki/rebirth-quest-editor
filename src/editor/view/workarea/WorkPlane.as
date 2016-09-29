@@ -100,13 +100,13 @@ public class WorkPlane extends Sprite
 		for each (var answer:AnswerView in _relationsAnswers)
 		{
 			var dialogView:DialogView = getDialogViewById(answer.answerData.relation);
-			var startDrawPoint:Point = _relationsCont.globalToLocal(answer.getGlobalPointOfRelation());
-			var endDrawPoint:Point = _relationsCont.globalToLocal(dialogView.getGlobalPointOfRelation());
-			_relationsCont.graphics.beginFill(0xFF0000, 1);
-			_relationsCont.graphics.lineStyle(2, 0xFF0000);
-			_relationsCont.graphics.moveTo(startDrawPoint.x, startDrawPoint.y);
-			_relationsCont.graphics.lineTo(endDrawPoint.x, endDrawPoint.y);
-			_relationsCont.graphics.endFill();
+			var point1:Point = _relationsCont.globalToLocal(answer.getGlobalPointOfRelation());
+			var point4:Point = _relationsCont.globalToLocal(dialogView.getGlobalPointOfRelation());
+			var point2:Point = new Point(point1.x + (point4.x - point1.x) / 2, point1.y);
+			var point3:Point = new Point(point4.x - (point4.x - point1.x) / 2, point4.y);
+			var bezierCurve:BezierCurve = new BezierCurve([point1, point2, point3, point4]);
+			_relationsCont.graphics.lineStyle(2, 0xFF0000, 0.9);
+			bezierCurve.draw(_relationsCont.graphics, 1000);
 		}
 	}
 
