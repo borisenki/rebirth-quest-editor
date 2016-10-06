@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 29.09.16.
- */
 package editor.view.workarea
 {
 

@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 22.09.16.
- */
 package editor.view.panels.commands
 {
 import editor.controller.signals.StatusPanelSignal;
@@ -22,7 +19,14 @@ public class DialogCommandsPanelMediator extends Mediator
 	override public function initialize():void
 	{
 		super.initialize();
-		view.createDialogAnswer.add(createDialogAnswer);
+		view.createDialogAnswerSignal.add(createDialogAnswer);
+		view.deleteDialogSignal.add(deleteDialog);
+	}
+
+	private function deleteDialog():void
+	{
+		gameQuests.deleteSelectedDialog();
+		statusPanelSignal.dispatch("Диалог удалён");
 	}
 
 	private function createDialogAnswer():void
@@ -34,7 +38,8 @@ public class DialogCommandsPanelMediator extends Mediator
 	override public function destroy():void
 	{
 		super.destroy();
-		view.createDialogAnswer.remove(createDialogAnswer);
+		view.createDialogAnswerSignal.remove(createDialogAnswer);
+		view.deleteDialogSignal.remove(deleteDialog);
 	}
 }
 }

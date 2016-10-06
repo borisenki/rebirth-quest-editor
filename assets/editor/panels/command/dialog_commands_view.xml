@@ -1,6 +1,7 @@
 <comps>
-    <Panel height="40" width="250">
+    <Panel height="65" width="250">
         <VBox x="5" y="10">
+            <PushButton label="Удалить диалог" width="240" id="deleteDialogBtn" event="click:deleteDialog"/>
             <PushButton label="Добавить вариант ответа" width="240" id="createAnswer" event="click:createNewDialogAnswer"/>
         </VBox>
     </Panel>

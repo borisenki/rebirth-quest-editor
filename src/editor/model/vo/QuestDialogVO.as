@@ -38,6 +38,17 @@ public class QuestDialogVO
 		}
 	}
 
+	public function deleteLinksToDialog(dialogId:int):void
+	{
+		for each (var answer:DialogAnswerVO in _answers)
+		{
+			if (answer.relation == dialogId)
+			{
+				answer.relation = -1;
+			}
+		}
+	}
+
 	public function updatePosition(posX:int, posY:int):void
 	{
 		positionX = posX;

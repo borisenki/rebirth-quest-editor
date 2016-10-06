@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 09.09.16.
- */
 package editor.model.vo
 {
 public class GameQuestVO
@@ -61,6 +58,25 @@ public class GameQuestVO
 		var newDialog:QuestDialogVO = new QuestDialogVO();
 		newDialog.id = lastId;
 		_dialogs.push(newDialog);
+	}
+	
+	public function deleteDialog(dialogId:int):void
+	{
+		for (var i:int = 0; i < _dialogs.length; i++)
+		{
+			if (_dialogs[i].id == dialogId)
+			{
+				_dialogs.splice(i, 1);
+			}
+		}
+	}
+
+	public function deleteLinksToDialog(dialogId:int):void
+	{
+		for each (var dialog:QuestDialogVO in _dialogs)
+		{
+			dialog.deleteLinksToDialog(dialogId);
+		}
 	}
 
 	public function updateDialog(dialog:QuestDialogVO):void

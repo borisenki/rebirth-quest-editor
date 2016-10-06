@@ -42,6 +42,14 @@ public class GameQuests
 		getQuestById(questId).createDialog();
 		dataUpdate.dispatch();
 	}
+
+	public function deleteSelectedDialog():void
+	{
+		getQuestById(_selectedQuestId).deleteLinksToDialog(_selectedDialogId);
+		getQuestById(_selectedQuestId).deleteDialog(_selectedDialogId);
+		_selectedDialogId = 1;
+		dataUpdate.dispatch();
+	}
 	
 	public function createAnswer(questId:int, dialogId:int):void
 	{

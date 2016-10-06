@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 22.09.16.
- */
 package editor.view.panels.commands
 {
 import com.bit101.components.PushButton;
@@ -18,12 +15,14 @@ public class DialogCommandsPanel extends Sprite
 
 	private var config:MinimalConfigurator;
 	private var createDialog:PushButton;
-	private var _createDialogAnswer:Signal;
+	private var _createDialogAnswerSignal:Signal;
+	private var _deleteDialogSignal:Signal;
 	private var _dialogId:int;
 
 	public function DialogCommandsPanel()
 	{
-		_createDialogAnswer = new Signal();
+		_createDialogAnswerSignal = new Signal();
+		_deleteDialogSignal = new Signal();
 		initComponents();
 	}
 
@@ -36,7 +35,17 @@ public class DialogCommandsPanel extends Sprite
 
 	public function createNewDialogAnswer(e:Event):void
 	{
-		_createDialogAnswer.dispatch();
+		_createDialogAnswerSignal.dispatch();
+	}
+
+	public function deleteDialog(e:Event):void
+	{
+		_deleteDialogSignal.dispatch();
+	}
+
+	public function get deleteDialogSignal():Signal
+	{
+		return _deleteDialogSignal;
 	}
 
 	public function set dialogId(value:int):void
@@ -49,9 +58,9 @@ public class DialogCommandsPanel extends Sprite
 		return _dialogId;
 	}
 
-	public function get createDialogAnswer():Signal
+	public function get createDialogAnswerSignal():Signal
 	{
-		return _createDialogAnswer;
+		return _createDialogAnswerSignal;
 	}
 }
 }
