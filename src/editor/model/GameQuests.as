@@ -47,7 +47,8 @@ public class GameQuests
 	{
 		getQuestById(_selectedQuestId).deleteLinksToDialog(_selectedDialogId);
 		getQuestById(_selectedQuestId).deleteDialog(_selectedDialogId);
-		_selectedDialogId = 1;
+		_selectedDialogId = -1;
+		dialogSelected.dispatch();
 		dataUpdate.dispatch();
 	}
 	

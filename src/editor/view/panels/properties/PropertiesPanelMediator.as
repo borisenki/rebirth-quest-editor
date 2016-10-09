@@ -34,7 +34,14 @@ public class PropertiesPanelMediator extends Mediator
 
 	private function onDialogSelected():void
 	{
-		view.fillPanel(PropertiesPanel.QUEST_INFO_PANEL | PropertiesPanel.DIALOG_INFO_PANEL);
+		if (gameQuests.selectedDialogId != -1)
+		{
+			view.fillPanel(PropertiesPanel.QUEST_INFO_PANEL | PropertiesPanel.DIALOG_INFO_PANEL);
+		}
+		else
+		{
+			view.fillPanel(PropertiesPanel.QUEST_INFO_PANEL);
+		}
 	}
 
 	private function onQuestSelected():void

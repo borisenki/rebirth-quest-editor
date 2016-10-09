@@ -24,8 +24,15 @@ public class CommandPanelMediator extends Mediator
 
 	private function dialogSelected():void
 	{
-		view.dialogId = gameQuests.selectedDialogId;
-		view.fillPanel(CommandPanel.QUEST_COMMANDS | CommandPanel.CREATE_DIALOG);
+		if (gameQuests.selectedDialogId != -1)
+		{
+			view.dialogId = gameQuests.selectedDialogId;
+			view.fillPanel(CommandPanel.QUEST_COMMANDS | CommandPanel.CREATE_DIALOG);
+		}
+		else
+		{
+			questSelected();
+		}
 	}
 
 	private function questSelected():void

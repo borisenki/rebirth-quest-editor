@@ -28,8 +28,11 @@ public class DialogInfoPanelMediator extends Mediator
 
 	private function dataUpdate():void
 	{
-		_selectedDialog = gameQuest.getSelectedDialog();
-		view.setInfo(_selectedDialog);
+		if (gameQuest.selectedDialogId != -1)
+		{
+			_selectedDialog = gameQuest.getSelectedDialog();
+			view.setInfo(_selectedDialog);
+		}
 	}
 
 	private function saveDialog():void
