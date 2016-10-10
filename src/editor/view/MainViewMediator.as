@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 03.09.16.
- */
 package editor.view
 {
 import editor.controller.signals.MacroSequenceSignal;
