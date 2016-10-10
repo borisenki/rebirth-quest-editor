@@ -16,14 +16,9 @@ public class QuestDialogVO
 		if (xml != null)
 		{
 			_id = xml.@id;
-			if (xml.@started != undefined)
-			{
-				_started = xml.@started;
-			}
-			if (xml.@text != undefined)
-			{
-				_text = xml.@text;
-			}
+
+			_started = (xml.@started == "true") ? true : false;
+			_text = xml.@text;
 			_positionX = (xml.@positionX != undefined) ? xml.@positionX : -1;
 			_positionY = (xml.@positionY != undefined) ? xml.@positionY : -1;
 			for each (var answer:XML in xml.answers.answer)

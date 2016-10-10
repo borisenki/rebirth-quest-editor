@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 06.09.16.
- */
 package editor.view
 {
 import editor.controller.signals.LoadQuestsSignal;
