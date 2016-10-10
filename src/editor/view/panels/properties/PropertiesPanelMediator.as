@@ -1,6 +1,3 @@
-/**
- * Created by borisenki on 07.09.16.
- */
 package editor.view.panels.properties
 {
 import editor.model.DataModel;
