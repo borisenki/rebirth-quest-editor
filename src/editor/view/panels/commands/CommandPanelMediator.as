@@ -20,6 +20,20 @@ public class CommandPanelMediator extends Mediator
 		super.initialize();
 		gameQuests.questSelected.add(questSelected);
 		gameQuests.dialogSelected.add(dialogSelected);
+		gameQuests.answerSelected.add(answerSelected);
+	}
+
+	private function answerSelected():void
+	{
+		if (gameQuests.selectedAnswerId != -1)
+		{
+			view.answerId = gameQuests.selectedAnswerId;
+			view.fillPanel(CommandPanel.QUEST_COMMANDS | CommandPanel.DIALOG_COMMANDS | CommandPanel.ANSWER_COMMANDS);
+		}
+		else
+		{
+			questSelected();
+		}
 	}
 
 	private function dialogSelected():void
@@ -27,7 +41,7 @@ public class CommandPanelMediator extends Mediator
 		if (gameQuests.selectedDialogId != -1)
 		{
 			view.dialogId = gameQuests.selectedDialogId;
-			view.fillPanel(CommandPanel.QUEST_COMMANDS | CommandPanel.CREATE_DIALOG);
+			view.fillPanel(CommandPanel.QUEST_COMMANDS | CommandPanel.DIALOG_COMMANDS);
 		}
 		else
 		{
@@ -47,6 +61,7 @@ public class CommandPanelMediator extends Mediator
 		super.destroy();
 		gameQuests.questSelected.remove(questSelected);
 		gameQuests.dialogSelected.remove(dialogSelected);
+		gameQuests.answerSelected.remove(answerSelected);
 	}
 }
 }

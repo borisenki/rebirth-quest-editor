@@ -49,6 +49,18 @@ public class QuestDialogVO
 		}
 	}
 
+	public function deleteAnswer(answerId:int):void
+	{
+		for (var i:int = 0; i < _answers.length; i++)
+		{
+			if (_answers[i].id == answerId)
+			{
+				_answers.splice(i, 1);
+				return;
+			}
+		}
+	}
+
 	public function updatePosition(posX:int, posY:int):void
 	{
 		positionX = posX;

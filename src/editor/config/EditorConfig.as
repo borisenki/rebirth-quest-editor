@@ -22,6 +22,8 @@ import editor.view.MenuPanel;
 import editor.view.MenuPanelMediator;
 import editor.view.StatusPanel;
 import editor.view.StatusPanelMediator;
+import editor.view.panels.commands.AnswerCommandsPanel;
+import editor.view.panels.commands.AnswerCommandsPanelMediator;
 import editor.view.panels.commands.CommandPanel;
 import editor.view.panels.commands.CommandPanelMediator;
 import editor.view.panels.commands.DialogCommandsPanel;
@@ -101,6 +103,7 @@ public class EditorConfig implements IConfig
 		mediatorMap.map(CommandPanel).toMediator(CommandPanelMediator);
 		mediatorMap.map(QuestCommandsPanel).toMediator(QuestCommandsPanelMediator);
 		mediatorMap.map(DialogCommandsPanel).toMediator(DialogCommandsPanelMediator);
+		mediatorMap.map(AnswerCommandsPanel).toMediator(AnswerCommandsPanelMediator);
 		//workarea
 		mediatorMap.map(WorkPlane).toMediator(WorkPlaneMediator);
 		mediatorMap.map(DialogView).toMediator(DialogViewMediator);

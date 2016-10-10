@@ -58,6 +58,14 @@ public class GameQuests
 		dataUpdate.dispatch();
 	}
 
+	public function deleteSelectedAnswer():void
+	{
+		getQuestById(_selectedQuestId).deleteAnswer(_selectedDialogId, _selectedAnswerId);
+		_selectedAnswerId = -1;
+		answerSelected.dispatch();
+		dataUpdate.dispatch();
+	}
+
 	public function getSelectedAnswer():DialogAnswerVO
 	{
 		return getSelectedDialog().getAnswer(_selectedAnswerId);
@@ -172,6 +180,11 @@ public class GameQuests
 	public function get selectedDialogId():int
 	{
 		return _selectedDialogId;
+	}
+
+	public function get selectedAnswerId():int
+	{
+		return _selectedAnswerId;
 	}
 }
 }

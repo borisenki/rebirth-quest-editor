@@ -29,7 +29,10 @@ public class PropertiesPanelMediator extends Mediator
 
 	private function onAnswerSelected():void
 	{
-		view.fillPanel(PropertiesPanel.DIALOG_INFO_PANEL | PropertiesPanel.ANSWER_PROPERTIES_PANEL);
+		if (gameQuests.selectedAnswerId != -1)
+		{
+			view.fillPanel(PropertiesPanel.DIALOG_INFO_PANEL | PropertiesPanel.ANSWER_PROPERTIES_PANEL);
+		}
 	}
 
 	private function onDialogSelected():void

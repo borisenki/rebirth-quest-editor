@@ -71,6 +71,17 @@ public class GameQuestVO
 		}
 	}
 
+	public function deleteAnswer(dialogId:int, answerId:int):void
+	{
+		for (var i:int = 0; i < _dialogs.length; i++)
+		{
+			if (_dialogs[i].id == dialogId)
+			{
+				_dialogs[i].deleteAnswer(answerId);
+			}
+		}
+	}
+
 	public function deleteLinksToDialog(dialogId:int):void
 	{
 		for each (var dialog:QuestDialogVO in _dialogs)

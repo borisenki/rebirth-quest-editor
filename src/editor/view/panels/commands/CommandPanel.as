@@ -18,7 +18,8 @@ public class CommandPanel extends Sprite
 	private var command_panel_Class:Class;
 
 	public static const QUEST_COMMANDS:int = 2;
-	public static const CREATE_DIALOG:int = 4;
+	public static const DIALOG_COMMANDS:int = 4;
+	public static const ANSWER_COMMANDS:int = 8;
 
 	private var config:MinimalConfigurator;
 	private var rootPanel:Panel;
@@ -27,6 +28,7 @@ public class CommandPanel extends Sprite
 
 	private var _questId:int;
 	private var _dialogId:int;
+	private var _answerId:int;
 
 	public function CommandPanel()
 	{
@@ -55,9 +57,13 @@ public class CommandPanel extends Sprite
 		{
 			addQuestCommands();
 		}
-		if (CREATE_DIALOG & mask)
+		if (DIALOG_COMMANDS & mask)
 		{
 			addDialogCommands();
+		}
+		if (ANSWER_COMMANDS & mask)
+		{
+			addAnswerCommands();
 		}
 	}
 
@@ -76,6 +82,15 @@ public class CommandPanel extends Sprite
 		panel.dialogId = _dialogId;
 		panel.y = panelsContainerHeight;
 		panelsContainer.addChild(panel);
+		panelsContainerHeight += 65;
+	}
+
+	private function addAnswerCommands():void
+	{
+		var panel:AnswerCommandsPanel = new AnswerCommandsPanel();
+		panel.answerId = _answerId;
+		panel.y = panelsContainerHeight;
+		panelsContainer.addChild(panel);
 		panelsContainerHeight += 40;
 	}
 
@@ -87,6 +102,11 @@ public class CommandPanel extends Sprite
 	public function set dialogId(value:int):void
 	{
 		_dialogId = value;
+	}
+
+	public function set answerId(value:int):void
+	{
+		_answerId = value;
 	}
 }
 }

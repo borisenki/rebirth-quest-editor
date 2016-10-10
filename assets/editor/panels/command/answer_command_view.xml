@@ -1,0 +1,7 @@
+<comps>
+    <Panel height="40" width="250">
+        <VBox x="5" y="10">
+            <PushButton label="Удалить ответ" width="240" id="deleteAnswer" event="click:onDeleteAnswer"/>
+        </VBox>
+    </Panel>
+</comps>
